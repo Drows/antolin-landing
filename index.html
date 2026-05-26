@@ -1472,6 +1472,8 @@
         <p class="footer-note" data-i18n="foot.1">Médico Cirujano · Diplomado en Terapias con Psicodélicos · Santiago, Chile.</p>
         <p class="footer-note" style="margin-top:8px;">
           <button class="privacy-link" style="font-size:13px;" onclick="openPrivacy()" data-i18n="foot.privacy">Política de privacidad</button>
+          &nbsp;·&nbsp;
+          <button class="privacy-link" style="font-size:13px;" onclick="resetCookies()" data-i18n="foot.cookies">Restablecer preferencias de cookies</button>
         </p>
       </div>
       <p class="footer-note" data-i18n="foot.2">Información educativa. No constituye urgencia médica. En caso de síntomas graves, acude a un servicio de urgencia local.</p>
@@ -1611,6 +1613,7 @@
       "foot.1": "Médico Cirujano · Diplomado en Terapias con Psicodélicos · Santiago, Chile.",
       "foot.2": "Información educativa. No constituye urgencia médica. En caso de síntomas graves, acude a un servicio de urgencia local.",
       "foot.privacy": "Política de privacidad",
+      "foot.cookies": "Restablecer preferencias de cookies",
       "price.label": "Primera consulta",
       "price.main":  "$35 USD",
       "price.alt":   "$30.000 CLP · Pago acordado al agendar",
@@ -1717,6 +1720,7 @@
       "foot.1": "Surgeon · Diploma in Psychedelic Therapies · Santiago, Chile.",
       "foot.2": "Educational information. Does not constitute a medical emergency. In case of serious symptoms, go to a local emergency service.",
       "foot.privacy": "Privacy policy",
+      "foot.cookies": "Reset cookie preferences",
       "price.label": "First consultation",
       "price.main":  "$35 USD",
       "price.alt":   "$30,000 CLP · Payment agreed when booking",
@@ -1914,6 +1918,11 @@
   function rejectCookies() {
     localStorage.setItem('cookie_consent', 'rejected');
     document.getElementById('cookie-banner').classList.add('hidden');
+  }
+
+  function resetCookies() {
+    localStorage.removeItem('cookie_consent');
+    document.getElementById('cookie-banner').classList.remove('hidden');
   }
 
   /* ── Privacy modal ──────────────────────────────────────── */
