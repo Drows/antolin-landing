@@ -821,6 +821,90 @@
     .modal-box p, .modal-box li { font-size: 13.5px; color: var(--muted); line-height: 1.72; margin-bottom: 8px; }
     .modal-box ul { padding-left: 18px; margin-bottom: 8px; }
     .privacy-link { color: var(--brand); cursor: pointer; text-decoration: underline; background: none; border: none; font: inherit; padding: 0; }
+
+    /* ═══════════════════════════════════════════
+       FOREIGNERS
+    ═══════════════════════════════════════════ */
+    .foreign-split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: start; }
+    @media (max-width: 900px) { .foreign-split { grid-template-columns: 1fr; } }
+    .foreign-note {
+      background: var(--gold-light); border: 1px solid var(--gold-border);
+      border-radius: var(--radius-sm); padding: 16px 20px; margin-top: 20px;
+      font-size: 13.5px; color: var(--gold); line-height: 1.65;
+    }
+    .foreign-points { display: grid; gap: 12px; }
+    .foreign-point {
+      display: flex; gap: 12px; align-items: flex-start;
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--radius-sm); padding: 16px 18px;
+    }
+    .fp-icon { font-size: 20px; flex-shrink: 0; }
+    .fp-text { font-size: 14px; line-height: 1.6; }
+    .fp-text strong { display: block; font-size: 12px; font-weight: 700; color: var(--brand); margin-bottom: 2px; letter-spacing: .03em; text-transform: uppercase; }
+
+    /* ═══════════════════════════════════════════
+       WHAT YOU RECEIVE
+    ═══════════════════════════════════════════ */
+    .receive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 16px; margin-top: 32px; }
+    .receive-item { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 20px; box-shadow: var(--sh-xs); }
+    .receive-icon { font-size: 26px; margin-bottom: 10px; }
+    .receive-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .receive-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .receive-note { margin-top: 28px; color: var(--muted); font-size: 14px; font-style: italic; text-align: center; }
+
+    /* ═══════════════════════════════════════════
+       COMMON REASONS
+    ═══════════════════════════════════════════ */
+    .reasons-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 12px; margin-top: 28px; }
+    .reason-item { display: flex; gap: 10px; align-items: flex-start; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 14px 18px; }
+    .reason-dot { color: var(--brand); font-size: 18px; font-weight: 700; flex-shrink: 0; line-height: 1.4; }
+    .reason-text { font-size: 14px; color: var(--ink); line-height: 1.5; }
+    .reasons-note { margin-top: 20px; font-size: 13.5px; color: var(--muted); font-style: italic; }
+
+    /* ═══════════════════════════════════════════
+       NOT DOING
+    ═══════════════════════════════════════════ */
+    .not-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 12px; margin-top: 28px; }
+    .not-item { display: flex; gap: 12px; align-items: flex-start; background: var(--paper); border: 1px solid rgba(239,68,68,.15); border-radius: var(--radius-sm); padding: 14px 18px; }
+    .not-x { width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; background: rgba(239,68,68,.1); color: #ef4444; display: grid; place-items: center; font-size: 13px; font-weight: 800; }
+    .not-text { font-size: 14px; color: var(--muted); line-height: 1.5; padding-top: 2px; }
+
+    /* ═══════════════════════════════════════════
+       LEGAL
+    ═══════════════════════════════════════════ */
+    .legal-panel { background: var(--gold-light); border: 1px solid var(--gold-border); border-radius: var(--radius); padding: 40px; box-shadow: var(--sh-sm); }
+    .legal-panel h3 { font-size: 19px; font-weight: 800; color: var(--gold); letter-spacing: -.03em; margin-bottom: 18px; }
+    .legal-panel p { font-size: 15px; color: var(--ink); line-height: 1.75; margin-bottom: 12px; }
+
+    /* ═══════════════════════════════════════════
+       CREDENTIALS
+    ═══════════════════════════════════════════ */
+    .creds-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; display: flex; gap: 24px; align-items: flex-start; box-shadow: var(--sh-sm); margin-bottom: 48px; }
+    .creds-avatar { width: 68px; height: 68px; border-radius: 16px; flex-shrink: 0; background: linear-gradient(135deg, var(--brand), var(--brand-mid)); display: grid; place-items: center; font-size: 22px; font-weight: 900; color: white; letter-spacing: -.04em; }
+    [data-theme="dark"] .creds-avatar { color: #050a06; }
+    .creds-name { font-size: 17px; font-weight: 800; letter-spacing: -.035em; margin-bottom: 4px; }
+    .creds-badge { font-size: 12px; color: var(--brand); font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: .04em; }
+    .creds-desc { font-size: 14px; color: var(--muted); line-height: 1.68; }
+    @media (max-width: 600px) { .creds-card { flex-direction: column; } }
+
+    /* ═══════════════════════════════════════════
+       EMERGENCY
+    ═══════════════════════════════════════════ */
+    .emergency-panel { background: rgba(239,68,68,.05); border: 1.5px solid rgba(239,68,68,.18); border-radius: var(--radius); padding: 36px; text-align: center; }
+    .emergency-title { font-size: 18px; font-weight: 800; color: #dc2626; margin-bottom: 14px; }
+    [data-theme="dark"] .emergency-title { color: #f87171; }
+    .emergency-text { font-size: 14.5px; color: var(--muted); line-height: 1.75; max-width: 640px; margin: 0 auto; }
+    .emergency-text strong { color: var(--ink); }
+
+    /* ═══════════════════════════════════════════
+       FINAL CTA
+    ═══════════════════════════════════════════ */
+    .final-cta-section { padding: 80px 0; text-align: center; }
+    .final-cta-inner { background: var(--brand-light); border: 1px solid var(--brand-border); border-radius: var(--radius); padding: 56px 40px; }
+    .final-cta-inner h2 { font-size: clamp(26px,3.2vw,40px); letter-spacing: -.055em; margin-bottom: 16px; }
+    .final-cta-inner p { color: var(--muted); font-size: 16px; max-width: 520px; margin: 0 auto 32px; line-height: 1.65; }
+    .btn-xl { padding: 16px 40px; font-size: 16px; font-weight: 800; }
+    @media (max-width: 500px) { .final-cta-inner { padding: 36px 24px; } .btn-xl { padding: 14px 28px; } }
   </style>
 </head>
 <body>
@@ -879,8 +963,8 @@
           <h1 class="reveal d1" data-i18n="hero.h1">Orientación clínica <em>segura</em> para viajeros internacionales.</h1>
           <p class="lead reveal d2" data-i18n="hero.lead">Evaluación médica por videollamada para personas que viajan y necesitan revisar continuidad terapéutica, documentación clínica y alternativas de manejo bajo criterio profesional.</p>
           <div class="hero-actions reveal d3">
-            <a class="btn btn-primary" href="#agenda" data-i18n="hero.cta1">Solicitar evaluación</a>
-            <a class="btn btn-ghost"   href="#servicio" data-i18n="hero.cta2">Ver cómo funciona</a>
+            <a id="wa-hero-btn" class="btn btn-primary" href="https://wa.me/56934015893" target="_blank" rel="noopener" data-i18n="hero.cta1">Consultar por WhatsApp</a>
+            <a class="btn btn-ghost" href="#extranjeros" data-i18n="hero.cta2">Ver cómo funciona</a>
           </div>
           <div class="trust-row reveal d4">
             <span class="trust-item"><span class="trust-dot">✓</span><span data-i18n="trust.1">Médico inscrito en Chile</span></span>
@@ -931,6 +1015,36 @@
       </div>
     </div>
 
+    <!-- ── FOREIGNERS ───────────────────────── -->
+    <section id="extranjeros">
+      <div class="wrap foreign-split">
+        <div class="reveal">
+          <div class="section-tag" data-i18n="for.tag">Para extranjeros en Chile</div>
+          <h2 style="font-size:clamp(28px,3.4vw,44px);letter-spacing:-.055em;line-height:1.05;margin-bottom:16px;" data-i18n="for.h2">¿Eres extranjero y estás en Chile?</h2>
+          <p style="color:var(--muted);font-size:16px;line-height:1.7;" data-i18n="for.p">Sí, puedes solicitar una evaluación médica por telemedicina mientras estés en Chile. La atención se realiza por videollamada, en español o inglés, y está orientada a personas que necesitan orientación médica seria, documentación clínica y continuidad de tratamiento durante su estadía.</p>
+          <div class="foreign-note"><strong data-i18n="for.note.title">Importante:</strong> <span data-i18n="for.note.p">La consulta no garantiza la emisión de receta. Toda indicación depende de una evaluación médica individual y de que exista una justificación clínica adecuada.</span></div>
+        </div>
+        <div class="foreign-points reveal d1">
+          <div class="foreign-point">
+            <span class="fp-icon">🎥</span>
+            <div class="fp-text"><strong data-i18n="for.pt1.t">Videollamada</strong><span data-i18n="for.pt1.d">Consulta por video en español o inglés, desde donde estés en Chile.</span></div>
+          </div>
+          <div class="foreign-point">
+            <span class="fp-icon">📋</span>
+            <div class="fp-text"><strong data-i18n="for.pt2.t">Documentación clínica</strong><span data-i18n="for.pt2.d">Orientación sobre documentación médica para uso personal durante tu estadía.</span></div>
+          </div>
+          <div class="foreign-point">
+            <span class="fp-icon">🔒</span>
+            <div class="fp-text"><strong data-i18n="for.pt3.t">Confidencial y caso a caso</strong><span data-i18n="for.pt3.d">Cada caso se evalúa individualmente. Atención privada y responsable.</span></div>
+          </div>
+          <div class="foreign-point">
+            <span class="fp-icon">💬</span>
+            <div class="fp-text"><strong data-i18n="for.pt4.t">Contacto directo por WhatsApp</strong><span data-i18n="for.pt4.d">Sin formularios complejos. Escríbeme y coordinamos la evaluación.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ── SERVICE ────────────────────────────── -->
     <section id="servicio">
       <div class="wrap">
@@ -959,6 +1073,45 @@
       </div>
     </section>
 
+    <!-- ── WHAT YOU RECEIVE ─────────────────── -->
+    <section>
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-tag" data-i18n="rcv.tag">Después de la consulta</div>
+          <h2 data-i18n="rcv.h2">Qué recibes después de la evaluación.</h2>
+          <p data-i18n="rcv.p">La consulta está enfocada en entregar una evaluación responsable, clara y documentada.</p>
+        </div>
+        <div class="receive-grid">
+          <div class="receive-item reveal">
+            <div class="receive-icon">📄</div>
+            <div class="receive-title" data-i18n="rcv.l1.t">Resumen clínico</div>
+            <div class="receive-desc" data-i18n="rcv.l1.d">Documento con los hallazgos relevantes de la evaluación.</div>
+          </div>
+          <div class="receive-item reveal d1">
+            <div class="receive-icon">💊</div>
+            <div class="receive-title" data-i18n="rcv.l2.t">Indicaciones personalizadas</div>
+            <div class="receive-desc" data-i18n="rcv.l2.d">Indicaciones médicas adaptadas a tu situación y objetivos.</div>
+          </div>
+          <div class="receive-item reveal d2">
+            <div class="receive-icon">📚</div>
+            <div class="receive-title" data-i18n="rcv.l3.t">Educación clínica</div>
+            <div class="receive-desc" data-i18n="rcv.l3.d">Información sobre uso seguro, dosis, contraindicaciones e interacciones.</div>
+          </div>
+          <div class="receive-item reveal d3">
+            <div class="receive-icon">🗺️</div>
+            <div class="receive-title" data-i18n="rcv.l4.t">Orientación documental</div>
+            <div class="receive-desc" data-i18n="rcv.l4.d">Guía sobre documentación médica para portar tratamiento en Chile.</div>
+          </div>
+          <div class="receive-item reveal d4">
+            <div class="receive-icon">📝</div>
+            <div class="receive-title" data-i18n="rcv.l5.t">Receta o certificado</div>
+            <div class="receive-desc" data-i18n="rcv.l5.d">Solo si existe indicación clínica y corresponde según normativa.</div>
+          </div>
+        </div>
+        <p class="receive-note reveal" data-i18n="rcv.note">La emisión de receta o certificado depende exclusivamente del criterio médico y de la evaluación individual.</p>
+      </div>
+    </section>
+
     <!-- ── TRAVELERS ──────────────────────────── -->
     <section id="viajeros">
       <div class="wrap split">
@@ -977,6 +1130,69 @@
           <li><span class="check" style="background:var(--gold);box-shadow:0 0 6px var(--gold);">!</span><div data-i18n="who.l7"><strong>Edad mínima:</strong> 21 años. Pacientes de 18 a 20 años pueden ser evaluados con excepciones a criterio médico.</div></li>
           <li><span class="check" style="background:var(--gold);box-shadow:0 0 6px var(--gold);">!</span><div data-i18n="who.l8"><strong>Sin antecedentes penales vigentes:</strong> requisito indispensable para acceder al servicio.</div></li>
         </ul>
+      </div>
+    </section>
+
+    <!-- ── COMMON REASONS ────────────────────── -->
+    <section>
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-tag" data-i18n="rsn.tag">Motivos frecuentes</div>
+          <h2 data-i18n="rsn.h2">¿Para qué suelen consultar los pacientes?</h2>
+        </div>
+        <div class="reasons-grid">
+          <div class="reason-item reveal"><span class="reason-dot">›</span><span class="reason-text" data-i18n="rsn.l1">Continuidad de tratamiento durante su estadía en Chile.</span></div>
+          <div class="reason-item reveal d1"><span class="reason-dot">›</span><span class="reason-text" data-i18n="rsn.l2">Dolor crónico.</span></div>
+          <div class="reason-item reveal d2"><span class="reason-dot">›</span><span class="reason-text" data-i18n="rsn.l3">Trastornos del sueño.</span></div>
+          <div class="reason-item reveal"><span class="reason-dot">›</span><span class="reason-text" data-i18n="rsn.l4">Síntomas ansiosos o estrés.</span></div>
+          <div class="reason-item reveal d1"><span class="reason-dot">›</span><span class="reason-text" data-i18n="rsn.l5">Uso previo de cannabis medicinal en otro país.</span></div>
+          <div class="reason-item reveal d2"><span class="reason-dot">›</span><span class="reason-text" data-i18n="rsn.l6">Dudas sobre interacciones, contraindicaciones o uso seguro.</span></div>
+          <div class="reason-item reveal d3"><span class="reason-dot">›</span><span class="reason-text" data-i18n="rsn.l7">Necesidad de documentación médica para uso personal en Chile.</span></div>
+        </div>
+        <p class="reasons-note reveal" data-i18n="rsn.note">Cada caso se evalúa de forma individual. La consulta no garantiza una receta ni una indicación específica.</p>
+      </div>
+    </section>
+
+    <!-- ── NOT DOING ──────────────────────────── -->
+    <section>
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-tag" data-i18n="not.tag">Transparencia</div>
+          <h2 data-i18n="not.h2">Lo que no hacemos.</h2>
+        </div>
+        <div class="not-grid">
+          <div class="not-item reveal"><span class="not-x">✕</span><span class="not-text" data-i18n="not.l1">No vendemos cannabis ni derivados.</span></div>
+          <div class="not-item reveal d1"><span class="not-x">✕</span><span class="not-text" data-i18n="not.l2">No garantizamos recetas médicas.</span></div>
+          <div class="not-item reveal d2"><span class="not-x">✕</span><span class="not-text" data-i18n="not.l3">No emitimos documentos sin evaluación clínica.</span></div>
+          <div class="not-item reveal"><span class="not-x">✕</span><span class="not-text" data-i18n="not.l4">No indicamos tratamientos para uso recreativo.</span></div>
+          <div class="not-item reveal d1"><span class="not-x">✕</span><span class="not-text" data-i18n="not.l5">No facilitamos distribución, reventa ni transporte internacional de sustancias.</span></div>
+          <div class="not-item reveal d2"><span class="not-x">✕</span><span class="not-text" data-i18n="not.l6">No reemplazamos una atención de urgencia.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LEGAL ──────────────────────────────── -->
+    <section>
+      <div class="wrap">
+        <div class="legal-panel reveal">
+          <h3 data-i18n="leg.h3">Cannabis medicinal en Chile: lo básico</h3>
+          <p data-i18n="leg.p1">En Chile, el uso medicinal de cannabis debe estar respaldado por una evaluación médica y documentación adecuada. Una receta o certificado puede ayudar a justificar el uso personal dentro del contexto clínico correspondiente, pero no autoriza automáticamente transportar productos entre países.</p>
+          <p data-i18n="leg.p2">Cada país tiene sus propias normas sobre cannabis, por lo que si estás viajando hacia o desde Chile, es importante revisar la regulación del país de origen, tránsito y destino.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CREDENTIALS ────────────────────────── -->
+    <section>
+      <div class="wrap">
+        <div class="creds-card reveal">
+          <div class="creds-avatar">AL</div>
+          <div>
+            <div class="creds-name">Dr. Antolín Losada Monardes</div>
+            <div class="creds-badge" data-i18n="crd.badge">Médico Cirujano · Diplomado en Terapias con Psicodélicos · Chile</div>
+            <div class="creds-desc" data-i18n="crd.desc">Atención médica por telemedicina para pacientes nacionales e internacionales. Consultas disponibles en español e inglés. Enfoque clínico, responsable y documentado para personas que requieren orientación médica durante su estadía en Chile.</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1056,6 +1272,27 @@
             <div style="font-size:13px;color:var(--muted);line-height:1.5;" data-i18n="testi.avg">Promedio de 5 reseñas verificadas en Doctoralia</div>
             <a href="https://www.doctoralia.cl/antolin-losada-monardes/" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:12px;padding:8px 16px;margin-top:4px;" data-i18n="testi.btn">Ver todas las reseñas</a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EMERGENCY ────────────────────────── -->
+    <section>
+      <div class="wrap">
+        <div class="emergency-panel reveal">
+          <p class="emergency-title" data-i18n="urg.title">⚠️ Este servicio no es para urgencias</p>
+          <p class="emergency-text" data-i18n="urg.p">La consulta online no reemplaza una atención de urgencia. Si presentas <strong>dolor torácico, dificultad respiratoria severa, pérdida de conciencia, reacción alérgica grave, ideación suicida, intoxicación severa, sangrado importante, convulsiones o síntomas neurológicos agudos</strong>, acude a un servicio de urgencia de inmediato.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FINAL CTA ──────────────────────────── -->
+    <section class="final-cta-section">
+      <div class="wrap">
+        <div class="final-cta-inner reveal">
+          <h2 data-i18n="cta.h2">¿Tienes dudas sobre tu caso?</h2>
+          <p data-i18n="cta.p">Escríbeme por WhatsApp con tu edad, país de origen, motivo de consulta, medicamentos actuales y si ya estás en Chile o cuándo llegarás. Con esa información puedo orientarte sobre si tu caso puede ser evaluado por telemedicina.</p>
+          <a id="wa-final-btn" class="btn btn-primary btn-xl" href="https://wa.me/56934015893" target="_blank" rel="noopener" data-i18n="cta.btn">Consultar por WhatsApp</a>
         </div>
       </div>
     </section>
@@ -1224,7 +1461,7 @@
   </footer>
 
   <!-- ── FLOATING WHATSAPP BUTTON ─────────────────────── -->
-  <a class="wa-float" href="https://wa.me/56934015893" target="_blank" rel="noopener"
+  <a class="wa-float" id="wa-float-btn" href="https://wa.me/56934015893" target="_blank" rel="noopener"
      aria-label="Contáctanos por WhatsApp" title="Contáctanos por WhatsApp">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -1327,7 +1564,7 @@
       "who.l5":  "<strong>Viajeros con interés en dispensarios:</strong> orientación sobre acceso, requisitos legales y documentación médica necesaria en Chile.",
       "who.l6":  "<strong>Pacientes que buscan un enfoque formal:</strong> plan escrito, educación y seguimiento cuando corresponda.",
       "who.l7":  "<strong>Edad mínima:</strong> 21 años. Pacientes de 18 a 20 años pueden ser evaluados con excepciones a criterio médico.",
-      "who.l8":  "<strong>Sin antecedentes penales vigentes:</strong> requisito indispensable para acceder al servicio.",
+      "who.l8":  "<strong>Uso médico, personal y documentado:</strong> este servicio está orientado exclusivamente a pacientes que buscan una evaluación médica seria. No se atienden solicitudes relacionadas con venta, distribución o transporte internacional de sustancias.",
       "vis.label": "Medicina · Botánica · Bienestar",
       "vis.sub":   "Evaluación clínica con criterio científico y enfoque terapéutico responsable.",
       "form.h2": "Solicita una evaluación",
@@ -1369,7 +1606,30 @@
       "cookie.text": "Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra",
       "cookie.link": "política de privacidad",
       "cookie.accept":"Aceptar",
-      "cookie.reject":"Solo necesarias"
+      "cookie.reject":"Solo necesarias",
+      "hero.cta1": "Consultar por WhatsApp",
+      "hero.cta2": "Ver cómo funciona",
+      "for.tag":"Para extranjeros en Chile","for.h2":"¿Eres extranjero y estás en Chile?","for.p":"Sí, puedes solicitar una evaluación médica por telemedicina mientras estés en Chile. La atención se realiza por videollamada, en español o inglés, y está orientada a personas que necesitan orientación médica seria, documentación clínica y continuidad de tratamiento durante su estadía.","for.note.title":"Importante:","for.note.p":"La consulta no garantiza la emisión de receta. Toda indicación depende de una evaluación médica individual y de que exista una justificación clínica adecuada.",
+      "for.pt1.t":"Videollamada","for.pt1.d":"Consulta por video en español o inglés, desde donde estés en Chile.",
+      "for.pt2.t":"Documentación clínica","for.pt2.d":"Orientación sobre documentación médica para uso personal durante tu estadía.",
+      "for.pt3.t":"Confidencial y caso a caso","for.pt3.d":"Cada caso se evalúa individualmente. Atención privada y responsable.",
+      "for.pt4.t":"Contacto directo por WhatsApp","for.pt4.d":"Sin formularios complejos. Escríbeme y coordinamos la evaluación.",
+      "rcv.tag":"Después de la consulta","rcv.h2":"Qué recibes después de la evaluación.","rcv.p":"La consulta está enfocada en entregar una evaluación responsable, clara y documentada.",
+      "rcv.l1.t":"Resumen clínico","rcv.l1.d":"Documento con los hallazgos relevantes de la evaluación.",
+      "rcv.l2.t":"Indicaciones personalizadas","rcv.l2.d":"Indicaciones médicas adaptadas a tu situación y objetivos.",
+      "rcv.l3.t":"Educación clínica","rcv.l3.d":"Información sobre uso seguro, dosis, contraindicaciones e interacciones.",
+      "rcv.l4.t":"Orientación documental","rcv.l4.d":"Guía sobre documentación médica para portar tratamiento en Chile.",
+      "rcv.l5.t":"Receta o certificado","rcv.l5.d":"Solo si existe indicación clínica y corresponde según normativa.",
+      "rcv.note":"La emisión de receta o certificado depende exclusivamente del criterio médico y de la evaluación individual.",
+      "rsn.tag":"Motivos frecuentes","rsn.h2":"¿Para qué suelen consultar los pacientes?",
+      "rsn.l1":"Continuidad de tratamiento durante su estadía en Chile.","rsn.l2":"Dolor crónico.","rsn.l3":"Trastornos del sueño.","rsn.l4":"Síntomas ansiosos o estrés.","rsn.l5":"Uso previo de cannabis medicinal en otro país.","rsn.l6":"Dudas sobre interacciones, contraindicaciones o uso seguro.","rsn.l7":"Necesidad de documentación médica para uso personal en Chile.",
+      "rsn.note":"Cada caso se evalúa de forma individual. La consulta no garantiza una receta ni una indicación específica.",
+      "not.tag":"Transparencia","not.h2":"Lo que no hacemos.",
+      "not.l1":"No vendemos cannabis ni derivados.","not.l2":"No garantizamos recetas médicas.","not.l3":"No emitimos documentos sin evaluación clínica.","not.l4":"No indicamos tratamientos para uso recreativo.","not.l5":"No facilitamos distribución, reventa ni transporte internacional de sustancias.","not.l6":"No reemplazamos una atención de urgencia.",
+      "leg.h3":"Cannabis medicinal en Chile: lo básico","leg.p1":"En Chile, el uso medicinal de cannabis debe estar respaldado por una evaluación médica y documentación adecuada. Una receta o certificado puede ayudar a justificar el uso personal dentro del contexto clínico correspondiente, pero no autoriza automáticamente transportar productos entre países.","leg.p2":"Cada país tiene sus propias normas sobre cannabis, por lo que si estás viajando hacia o desde Chile, es importante revisar la regulación del país de origen, tránsito y destino.",
+      "crd.badge":"Médico Cirujano · Diplomado en Terapias con Psicodélicos · Chile","crd.desc":"Atención médica por telemedicina para pacientes nacionales e internacionales. Consultas disponibles en español e inglés. Enfoque clínico, responsable y documentado para personas que requieren orientación médica durante su estadía en Chile.",
+      "urg.title":"⚠️ Este servicio no es para urgencias","urg.p":"La consulta online no reemplaza una atención de urgencia. Si presentas <strong>dolor torácico, dificultad respiratoria severa, pérdida de conciencia, reacción alérgica grave, ideación suicida, intoxicación severa, sangrado importante, convulsiones o síntomas neurológicos agudos</strong>, acude a un servicio de urgencia de inmediato.",
+      "cta.h2":"¿Tienes dudas sobre tu caso?","cta.p":"Escríbeme por WhatsApp con tu edad, país de origen, motivo de consulta, medicamentos actuales y si ya estás en Chile o cuándo llegarás. Con esa información puedo orientarte sobre si tu caso puede ser evaluado por telemedicina.","cta.btn":"Consultar por WhatsApp"
     },
     en: {
       "brand":        "AL Clínica",
@@ -1410,7 +1670,7 @@
       "who.l5":  "<strong>Travelers interested in dispensaries:</strong> guidance on access, legal requirements and necessary medical documentation in Chile.",
       "who.l6":  "<strong>Patients seeking a formal approach:</strong> written plan, education and follow-up when appropriate.",
       "who.l7":  "<strong>Minimum age:</strong> 21 years. Patients aged 18–20 may be evaluated on a case-by-case basis at medical discretion.",
-      "who.l8":  "<strong>No active criminal record:</strong> mandatory requirement to access the service.",
+      "who.l8":  "<strong>Medical, personal and documented use only:</strong> this service is exclusively for patients seeking a serious medical evaluation. Requests related to distribution, resale or international transport of substances are not accepted.",
       "vis.label": "Medicine · Botany · Wellbeing",
       "vis.sub":   "Clinical evaluation with scientific criteria and a responsible therapeutic approach.",
       "form.h2": "Request an evaluation",
@@ -1452,7 +1712,30 @@
       "cookie.text": "We use cookies to improve your experience. By continuing, you accept our",
       "cookie.link": "privacy policy",
       "cookie.accept":"Accept",
-      "cookie.reject":"Necessary only"
+      "cookie.reject":"Necessary only",
+      "hero.cta1": "Message the doctor on WhatsApp",
+      "hero.cta2": "How it works",
+      "for.tag":"For foreigners in Chile","for.h2":"Are you a foreigner currently in Chile?","for.p":"Yes, you can request a medical evaluation via telemedicine while you are in Chile. The consultation is conducted by video call, in Spanish or English, and is aimed at people who need serious medical guidance, clinical documentation and continuity of care during their stay.","for.note.title":"Important:","for.note.p":"The consultation does not guarantee a prescription. All indications depend on an individual medical evaluation and whether adequate clinical justification exists.",
+      "for.pt1.t":"Video call","for.pt1.d":"Video consultation in Spanish or English, from wherever you are in Chile.",
+      "for.pt2.t":"Clinical documentation","for.pt2.d":"Guidance on medical documentation for personal use during your stay.",
+      "for.pt3.t":"Confidential and case-by-case","for.pt3.d":"Each case is evaluated individually. Private and responsible care.",
+      "for.pt4.t":"Direct WhatsApp contact","for.pt4.d":"No complex forms. Write to me and we will coordinate the evaluation.",
+      "rcv.tag":"After the consultation","rcv.h2":"What you receive after the evaluation.","rcv.p":"The consultation is focused on providing a responsible, clear and documented evaluation.",
+      "rcv.l1.t":"Clinical summary","rcv.l1.d":"Document with the relevant findings from the evaluation.",
+      "rcv.l2.t":"Personalized indications","rcv.l2.d":"Medical indications adapted to your situation and goals.",
+      "rcv.l3.t":"Clinical education","rcv.l3.d":"Information on safe use, dosing, contraindications and interactions.",
+      "rcv.l4.t":"Document guidance","rcv.l4.d":"Guide on medical documentation for carrying treatment in Chile.",
+      "rcv.l5.t":"Prescription or certificate","rcv.l5.d":"Only when there is clinical indication and appropriate under applicable regulations.",
+      "rcv.note":"The issuance of a prescription or certificate depends exclusively on medical judgment and individual evaluation.",
+      "rsn.tag":"Common reasons","rsn.h2":"Why do patients usually consult?",
+      "rsn.l1":"Continuity of treatment during their stay in Chile.","rsn.l2":"Chronic pain.","rsn.l3":"Sleep disorders.","rsn.l4":"Anxiety symptoms or stress.","rsn.l5":"Prior use of medical cannabis in another country.","rsn.l6":"Questions about interactions, contraindications or safe use.","rsn.l7":"Need for medical documentation for personal use in Chile.",
+      "rsn.note":"Each case is evaluated individually. The consultation does not guarantee a prescription or a specific indication.",
+      "not.tag":"Transparency","not.h2":"What we don't do.",
+      "not.l1":"We do not sell cannabis or derivatives.","not.l2":"We do not guarantee medical prescriptions.","not.l3":"We do not issue documents without clinical evaluation.","not.l4":"We do not indicate treatments for recreational use.","not.l5":"We do not facilitate distribution, resale or international transport of substances.","not.l6":"We do not replace emergency care.",
+      "leg.h3":"Medical cannabis in Chile: the basics","leg.p1":"In Chile, the medicinal use of cannabis must be supported by a medical evaluation and appropriate documentation. A prescription or certificate can help justify personal use within the corresponding clinical context, but does not automatically authorize transporting products between countries.","leg.p2":"Each country has its own regulations on cannabis, so if you are traveling to or from Chile, it is important to review the regulations of your country of origin, transit and destination.",
+      "crd.badge":"Surgeon · Diploma in Psychedelic Therapies · Chile","crd.desc":"Medical care via telemedicine for national and international patients. Consultations available in Spanish and English. Clinical, responsible and documented approach for people who require medical guidance during their stay in Chile.",
+      "urg.title":"⚠️ This service is not for emergencies","urg.p":"The online consultation does not replace emergency care. If you experience <strong>chest pain, severe shortness of breath, fainting, severe allergic reaction, suicidal thoughts, severe intoxication, uncontrolled bleeding, seizures, or acute neurological symptoms</strong>, seek emergency care immediately.",
+      "cta.h2":"Have questions about your case?","cta.p":"Message me on WhatsApp with your age, country of origin, reason for consultation, current medications and whether you are already in Chile or when you will arrive. With that information I can guide you on whether your case can be evaluated by telemedicine.","cta.btn":"Message the doctor on WhatsApp"
     }
   };
 
@@ -1487,6 +1770,7 @@
       ? 'Online Medical Consultation for Travelers'
       : 'Consulta Médica Online para Viajeros';
     if (typeof syncModalLang === 'function') syncModalLang(l);
+    if (typeof updateWALinks === 'function') updateWALinks(l);
   }
 
   /* ── Theme ──────────────────────────────────────────────── */
@@ -1633,6 +1917,34 @@
     if (e.key === 'Escape') closePrivacy();
   });
 
+  /* ── WhatsApp pre-loaded message ───────────────────────── */
+  const WA_MSG = {
+    es: `Hola doctor, estoy interesado/a en una evaluación médica online. Soy extranjero/a o viajero/a en Chile y quisiera saber si mi caso puede ser evaluado por telemedicina.
+
+Mi edad es:
+Mi país de origen es:
+Actualmente estoy en Chile / llegaré a Chile el:
+Motivo de consulta:
+Medicamentos actuales:
+Antecedentes relevantes:`,
+    en: `Hi doctor, I'm interested in an online medical consultation. I'm currently in Chile or planning to travel to Chile, and I'd like to know if my case can be evaluated through telemedicine.
+
+My age is:
+My country of origin is:
+I am currently in Chile / I will arrive in Chile on:
+Reason for consultation:
+Current medications:
+Relevant medical history:`
+  };
+
+  function updateWALinks(l) {
+    const url = `https://wa.me/56934015893?text=${encodeURIComponent(WA_MSG[l])}`;
+    ['wa-float-btn','wa-hero-btn','wa-final-btn'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.href = url;
+    });
+  }
+
   /* ── Privacy modal language sync (called from setLang) ─── */
   function syncModalLang(l) {
     const esEl = document.getElementById('privacy-content-es');
@@ -1641,6 +1953,7 @@
     if (enEl) enEl.style.display = l === 'en' ? '' : 'none';
   }
   syncModalLang(lang);
+  updateWALinks(lang);
   </script>
 </body>
 </html>
