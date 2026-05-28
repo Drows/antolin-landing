@@ -1,0 +1,315 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, author, category } = post.data;
+
+const formattedDate = pubDate.toLocaleDateString('es-CL', {
+  year: 'numeric', month: 'long', day: 'numeric'
+});
+
+const wordCount = post.body.split(/\s+/).length;
+const readTime = Math.max(1, Math.ceil(wordCount / 200));
+---
+
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} · AL Clínica</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="AL Clínica" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={`https://antolin.cl/blog/${post.slug}`} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "author": { "@type": "Person", "name": author },
+    "datePublished": pubDate.toISOString(),
+    "publisher": { "@type": "Organization", "name": "AL Clínica" }
+  })} />
+
+  <style>
+    :root {
+      --brand:       #2d6a4f;
+      --brand-mid:   #40916c;
+      --brand-light: #74c69d;
+      --gold:        #b5930a;
+      --ink:         #18241e;
+      --muted:       #5a6b62;
+      --bg:          #f4efe6;
+      --paper:       #fefcf8;
+      --line:        rgba(24,36,30,.10);
+      --line-strong: rgba(24,36,30,.18);
+      --radius:      14px;
+      --radius-sm:   8px;
+      --shadow:      0 2px 16px rgba(0,0,0,.07);
+    }
+    [data-theme="dark"] {
+      --brand:       #52b788;
+      --brand-mid:   #74c69d;
+      --brand-light: #95d5b2;
+      --gold:        #e6b800;
+      --ink:         #e4ede4;
+      --muted:       #8fa98f;
+      --bg:          #050a06;
+      --paper:       rgba(255,255,255,.05);
+      --line:        rgba(255,255,255,.08);
+      --line-strong: rgba(255,255,255,.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      font-size: 18px;
+    }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 900;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      max-width: 800px; margin: 0 auto;
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: system-ui, sans-serif;
+      font-size: 15px; font-weight: 700;
+      color: var(--ink); text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .logo-mark {
+      background: var(--brand);
+      color: #fff;
+      border-radius: 6px;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; letter-spacing: -.02em;
+    }
+    .nav-links {
+      display: flex; gap: 16px; align-items: center;
+    }
+    .nav-links a {
+      font-family: system-ui, sans-serif;
+      font-size: 14px; color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .theme-btn {
+      background: none; border: none; cursor: pointer;
+      font-size: 18px; padding: 4px;
+    }
+
+    /* ARTICLE CONTAINER */
+    .article-wrap {
+      max-width: 720px; margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* HEADER */
+    .post-category {
+      font-family: system-ui, sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--brand);
+      margin-bottom: 16px;
+    }
+    .post-title {
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      margin-bottom: 20px;
+      font-family: system-ui, sans-serif;
+      font-weight: 800;
+    }
+    .post-meta {
+      font-family: system-ui, sans-serif;
+      font-size: 13px; color: var(--muted);
+      display: flex; gap: 16px; flex-wrap: wrap;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    .post-meta span { display: flex; align-items: center; gap: 5px; }
+
+    /* PROSE */
+    .prose h2 {
+      font-family: system-ui, sans-serif;
+      font-size: clamp(20px, 3vw, 26px);
+      font-weight: 700; letter-spacing: -.02em;
+      margin: 48px 0 16px;
+      color: var(--ink);
+    }
+    .prose h3 {
+      font-family: system-ui, sans-serif;
+      font-size: 18px; font-weight: 600;
+      margin: 32px 0 12px;
+    }
+    .prose p { margin-bottom: 24px; }
+    .prose ul, .prose ol {
+      padding-left: 24px; margin-bottom: 24px;
+    }
+    .prose li { margin-bottom: 8px; }
+    .prose strong { font-weight: 700; color: var(--ink); }
+    .prose em { font-style: italic; }
+    .prose a {
+      color: var(--brand-mid); text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .prose blockquote {
+      border-left: 3px solid var(--brand);
+      padding: 12px 20px; margin: 32px 0;
+      background: rgba(45,106,79,.06);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-style: italic; color: var(--muted);
+    }
+    .prose hr {
+      border: none; border-top: 1px solid var(--line);
+      margin: 40px 0;
+    }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      background: rgba(181,147,10,.08);
+      border: 1px solid rgba(181,147,10,.25);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 48px 0 32px;
+      font-family: system-ui, sans-serif;
+      font-size: 13px; color: var(--muted);
+      line-height: 1.6;
+    }
+    .disclaimer strong { color: var(--gold); }
+
+    /* CTA */
+    .post-cta {
+      background: var(--paper);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    .post-cta h3 {
+      font-family: system-ui, sans-serif;
+      font-size: 20px; font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .post-cta p {
+      font-family: system-ui, sans-serif;
+      font-size: 14px; color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .btn-wa {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25d366; color: #fff;
+      font-family: system-ui, sans-serif;
+      font-size: 15px; font-weight: 600;
+      padding: 13px 28px; border-radius: 50px;
+      text-decoration: none;
+    }
+    .btn-wa:hover { background: #1ebe5d; }
+    .btn-wa svg { width: 20px; height: 20px; fill: white; }
+
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: system-ui, sans-serif;
+      font-size: 13px; color: var(--muted);
+      text-decoration: none; margin-bottom: 32px;
+    }
+    .back-link:hover { color: var(--ink); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 24px;
+      text-align: center;
+      font-family: system-ui, sans-serif;
+      font-size: 13px; color: var(--muted);
+    }
+    footer a { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="logo-mark">AL</span>
+        AL Clínica
+      </a>
+      <div class="nav-links">
+        <a href="/blog">Blog</a>
+        <a href="/#contacto">Consultar</a>
+        <button class="theme-btn" id="theme-btn" aria-label="Cambiar tema">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <article class="article-wrap">
+    <a href="/blog" class="back-link">← Volver al blog</a>
+
+    <div class="post-category">{category}</div>
+    <h1 class="post-title">{title}</h1>
+    <div class="post-meta">
+      <span>✍️ {author}</span>
+      <span>📅 {formattedDate}</span>
+      <span>⏱ {readTime} min de lectura</span>
+    </div>
+
+    <div class="prose">
+      <slot />
+    </div>
+
+    <div class="disclaimer">
+      <strong>Aviso médico:</strong> Este artículo tiene fines informativos y educativos únicamente. No reemplaza la consulta médica individual. Toda decisión clínica debe tomarse con un profesional de la salud calificado. Si tienes dudas sobre tu caso específico, <a href="https://wa.me/56934015893">contáctame directamente</a>.
+    </div>
+
+    <div class="post-cta">
+      <h3>¿Tienes preguntas sobre tu caso?</h3>
+      <p>Evaluaciones médicas online para pacientes nacionales e internacionales en Chile.</p>
+      <a class="btn-wa" href="https://wa.me/56934015893?text=Hola%20doctor%2C%20le%C3%AD%20su%20art%C3%ADculo%20y%20quisiera%20consultar%20sobre%20mi%20caso." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Consultar por WhatsApp
+      </a>
+    </div>
+  </article>
+
+  <footer>
+    <p>© {new Date().getFullYear()} AL Clínica · Dr. Antolín Losada Monardes · <a href="/">antolin.cl</a></p>
+  </footer>
+
+  <script>
+    const html = document.documentElement;
+    const btn = document.getElementById('theme-btn');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') { html.setAttribute('data-theme', 'dark'); btn.textContent = '☀️'; }
+    btn.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      btn.textContent = isDark ? '🌙' : '☀️';
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>

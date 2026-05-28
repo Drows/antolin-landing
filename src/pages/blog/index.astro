@@ -1,0 +1,200 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog · AL Clínica — Cannabis medicinal y salud</title>
+  <meta name="description" content="Artículos médicos sobre cannabis medicinal, salud integrativa y orientación clínica para pacientes en Chile. Por el Dr. Antolín Losada Monardes." />
+  <meta property="og:title" content="Blog · AL Clínica" />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://antolin.cl/blog" />
+
+  <style>
+    :root {
+      --brand:       #2d6a4f;
+      --brand-mid:   #40916c;
+      --ink:         #18241e;
+      --muted:       #5a6b62;
+      --bg:          #f4efe6;
+      --paper:       #fefcf8;
+      --line:        rgba(24,36,30,.10);
+      --line-strong: rgba(24,36,30,.18);
+      --radius:      14px;
+    }
+    [data-theme="dark"] {
+      --brand:       #52b788;
+      --brand-mid:   #74c69d;
+      --ink:         #e4ede4;
+      --muted:       #8fa98f;
+      --bg:          #050a06;
+      --paper:       rgba(255,255,255,.05);
+      --line:        rgba(255,255,255,.08);
+      --line-strong: rgba(255,255,255,.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--ink); }
+
+    .nav {
+      position: sticky; top: 0; z-index: 900;
+      background: var(--paper); border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      max-width: 960px; margin: 0 auto;
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-size: 15px; font-weight: 700;
+      color: var(--ink); text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .logo-mark {
+      background: var(--brand); color: #fff;
+      border-radius: 6px; width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; letter-spacing: -.02em;
+    }
+    .nav-links { display: flex; gap: 16px; align-items: center; }
+    .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; }
+    .nav-links a:hover { color: var(--ink); }
+    .theme-btn { background: none; border: none; cursor: pointer; font-size: 18px; padding: 4px; }
+
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    .blog-header { padding: 64px 0 48px; }
+    .blog-eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--brand);
+      margin-bottom: 14px;
+    }
+    .blog-header h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800; letter-spacing: -.03em;
+      line-height: 1.05; margin-bottom: 14px;
+    }
+    .blog-header p { font-size: 16px; color: var(--muted); max-width: 520px; line-height: 1.6; }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      padding-bottom: 80px;
+    }
+
+    .post-card {
+      background: var(--paper);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      padding: 28px;
+      text-decoration: none;
+      color: inherit;
+      display: flex; flex-direction: column; gap: 12px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .post-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,.1);
+    }
+    .card-category {
+      font-size: 11px; font-weight: 600; letter-spacing: .07em;
+      text-transform: uppercase; color: var(--brand);
+    }
+    .card-title {
+      font-size: 18px; font-weight: 700;
+      line-height: 1.3; letter-spacing: -.01em;
+    }
+    .card-desc { font-size: 14px; color: var(--muted); line-height: 1.6; flex: 1; }
+    .card-meta {
+      font-size: 12px; color: var(--muted);
+      display: flex; gap: 12px; padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .empty-state {
+      text-align: center; padding: 80px 24px;
+      color: var(--muted); font-size: 16px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 24px; text-align: center;
+      font-size: 13px; color: var(--muted);
+    }
+    footer a { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="logo-mark">AL</span>
+        AL Clínica
+      </a>
+      <div class="nav-links">
+        <a href="/blog" aria-current="page">Blog</a>
+        <a href="/#contacto">Consultar</a>
+        <button class="theme-btn" id="theme-btn" aria-label="Cambiar tema">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <header class="blog-header">
+      <div class="blog-eyebrow">Artículos médicos</div>
+      <h1>Cannabis medicinal<br>e información clínica</h1>
+      <p>Guías, orientaciones y contexto médico para pacientes que buscan información seria y documentada.</p>
+    </header>
+
+    {posts.length === 0 ? (
+      <div class="empty-state">
+        <p>Los artículos estarán disponibles pronto.</p>
+      </div>
+    ) : (
+      <div class="posts-grid">
+        {posts.map(post => {
+          const wordCount = post.body.split(/\s+/).length;
+          const readTime = Math.max(1, Math.ceil(wordCount / 200));
+          const date = post.data.pubDate.toLocaleDateString('es-CL', { year: 'numeric', month: 'short', day: 'numeric' });
+          return (
+            <a href={`/blog/${post.slug}`} class="post-card">
+              <div class="card-category">{post.data.category}</div>
+              <div class="card-title">{post.data.title}</div>
+              <div class="card-desc">{post.data.description}</div>
+              <div class="card-meta">
+                <span>{date}</span>
+                <span>{readTime} min</span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    )}
+  </div>
+
+  <footer>
+    <p>© {new Date().getFullYear()} AL Clínica · <a href="/">antolin.cl</a></p>
+  </footer>
+
+  <script>
+    const html = document.documentElement;
+    const btn = document.getElementById('theme-btn');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') { html.setAttribute('data-theme', 'dark'); btn.textContent = '☀️'; }
+    btn.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      btn.textContent = isDark ? '🌙' : '☀️';
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>
