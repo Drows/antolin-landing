@@ -1807,6 +1807,26 @@
     document.getElementById('theme-btn').textContent = t === 'dark' ? '☀️' : '🌙';
   }
 
+  /* ── WhatsApp pre-loaded message ───────────────────────── */
+  const WA_MSG = {
+    es: `Hola doctor, estoy interesado/a en una evaluación médica online. Soy extranjero/a o viajero/a en Chile y quisiera saber si mi caso puede ser evaluado por telemedicina.
+
+Mi edad es:
+Mi país de origen es:
+Actualmente estoy en Chile / llegaré a Chile el:
+Motivo de consulta:
+Medicamentos actuales:
+Antecedentes relevantes:`,
+    en: `Hi doctor, I'm interested in an online medical consultation. I'm currently in Chile or planning to travel to Chile, and I'd like to know if my case can be evaluated through telemedicine.
+
+My age is:
+My country of origin is:
+I am currently in Chile / I will arrive in Chile on:
+Reason for consultation:
+Current medications:
+Relevant medical history:`
+  };
+
   /* ── Init ───────────────────────────────────────────────── */
   setTheme(theme);  // already set by inline script; this just syncs the icon
   setLang(lang);
@@ -1943,26 +1963,6 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closePrivacy();
   });
-
-  /* ── WhatsApp pre-loaded message ───────────────────────── */
-  const WA_MSG = {
-    es: `Hola doctor, estoy interesado/a en una evaluación médica online. Soy extranjero/a o viajero/a en Chile y quisiera saber si mi caso puede ser evaluado por telemedicina.
-
-Mi edad es:
-Mi país de origen es:
-Actualmente estoy en Chile / llegaré a Chile el:
-Motivo de consulta:
-Medicamentos actuales:
-Antecedentes relevantes:`,
-    en: `Hi doctor, I'm interested in an online medical consultation. I'm currently in Chile or planning to travel to Chile, and I'd like to know if my case can be evaluated through telemedicine.
-
-My age is:
-My country of origin is:
-I am currently in Chile / I will arrive in Chile on:
-Reason for consultation:
-Current medications:
-Relevant medical history:`
-  };
 
   function updateWALinks(l) {
     const url = `https://wa.me/56934015893?text=${encodeURIComponent(WA_MSG[l])}`;
