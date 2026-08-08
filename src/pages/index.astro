@@ -4,7 +4,7 @@
 <html lang="es" data-theme="light">
 <head>
   <!-- Prevent flash of wrong theme -->
-  <script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})()</script>
+  <script is:inline>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})()</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -150,27 +150,7 @@
   }
   </script>
 
-  <!-- ── Google Analytics 4 ─────────────────────────────── -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKEJ70PE1S"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-EKEJ70PE1S');
-  </script>
-
-  <!-- ── Meta Pixel (Facebook / Instagram Ads) ─────────── -->
-  <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '7605269199588599');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=7605269199588599&ev=PageView&noscript=1"/></noscript>
+  <!-- Analytics and advertising scripts load only after explicit cookie consent. -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1491,7 +1471,7 @@
   </a>
 
   <!-- ── COOKIE CONSENT BANNER ─────────────────────────── -->
-  <div class="cookie-banner hidden" id="cookie-banner" role="dialog" aria-label="Cookie consent">
+  <div class="cookie-banner hidden" id="cookie-banner" role="dialog" aria-modal="false" aria-label="Cookie consent" aria-live="polite">
     <p class="cookie-text">
       <span data-i18n="cookie.text">Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra</span> <button class="privacy-link" onclick="openPrivacy()" data-i18n="cookie.link">política de privacidad</button>.
     </p>
@@ -1502,7 +1482,7 @@
   </div>
 
   <!-- ── PRIVACY POLICY MODAL ──────────────────────────── -->
-  <div class="modal-overlay" id="privacy-modal" role="dialog" aria-modal="true" aria-label="Política de privacidad" onclick="closePrivacyOutside(event)">
+  <div class="modal-overlay" id="privacy-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Política de privacidad" onclick="closePrivacyOutside(event)">
     <div class="modal-box">
       <button class="modal-close" onclick="closePrivacy()" aria-label="Cerrar">×</button>
       <div id="privacy-content-es">
@@ -1544,7 +1524,7 @@
     </div>
   </div>
 
-  <script>
+  <script is:inline>
   /* ── Translations ───────────────────────────────────────── */
   const T = {
     es: {
@@ -1555,7 +1535,7 @@
       "hero.eyebrow": "Atención médica online · Santiago, Chile · Español / English",
       "hero.h1":      "Orientación clínica <em>segura</em> para viajeros internacionales que llegan a Chile.",
       "hero.lead":    "Evaluación médica por videollamada para personas que viajan a Santiago de Chile. Continuidad terapéutica, orientación sobre dispensarios autorizados y documentación clínica bajo criterio profesional.",
-      "hero.cta1":    "Solicitar evaluación",
+      "hero.cta1":    "Consultar por WhatsApp",
       "hero.cta2":    "Ver cómo funciona",
       "trust.1":      "Médico inscrito en Chile",
       "trust.2":      "Orientación para dispensarios en Chile",
@@ -1630,8 +1610,6 @@
       "cookie.link": "política de privacidad",
       "cookie.accept":"Aceptar",
       "cookie.reject":"Solo necesarias",
-      "hero.cta1": "Consultar por WhatsApp",
-      "hero.cta2": "Ver cómo funciona",
       "for.tag":"Para extranjeros en Chile","for.h2":"¿Eres extranjero y estás en Chile?","for.p":"Sí, puedes solicitar una evaluación médica por telemedicina mientras estés en Chile. La atención se realiza por videollamada, en español o inglés, y está orientada a personas que necesitan orientación médica seria, documentación clínica y continuidad de tratamiento durante su estadía.","for.note.title":"Importante:","for.note.p":"La consulta no garantiza la emisión de receta. Toda indicación depende de una evaluación médica individual y de que exista una justificación clínica adecuada.",
       "for.pt1.t":"Videollamada","for.pt1.d":"Consulta por video en español o inglés, desde donde estés en Chile.",
       "for.pt2.t":"Documentación clínica","for.pt2.d":"Orientación sobre documentación médica para uso personal durante tu estadía.",
@@ -1662,8 +1640,8 @@
       "hero.eyebrow": "Online medical care · Santiago, Chile · Español / English",
       "hero.h1":      "<em>Safe</em> clinical guidance for international travelers arriving in Chile.",
       "hero.lead":    "Medical evaluation via video call for people traveling to Santiago, Chile. Therapeutic continuity, guidance on authorized dispensaries and clinical documentation under professional criteria.",
-      "hero.cta1":    "Request evaluation",
-      "hero.cta2":    "See how it works",
+      "hero.cta1":    "Message the doctor on WhatsApp",
+      "hero.cta2":    "How it works",
       "trust.1":      "Licensed physician in Chile",
       "trust.2":      "Dispensary guidance in Chile",
       "trust.3":      "Private teleconsultation · Case by case",
@@ -1737,8 +1715,6 @@
       "cookie.link": "privacy policy",
       "cookie.accept":"Accept",
       "cookie.reject":"Necessary only",
-      "hero.cta1": "Message the doctor on WhatsApp",
-      "hero.cta2": "How it works",
       "for.tag":"For foreigners in Chile","for.h2":"Are you a foreigner currently in Chile?","for.p":"Yes, you can request a medical evaluation via telemedicine while you are in Chile. The consultation is conducted by video call, in Spanish or English, and is aimed at people who need serious medical guidance, clinical documentation and continuity of care during their stay.","for.note.title":"Important:","for.note.p":"The consultation does not guarantee a prescription. All indications depend on an individual medical evaluation and whether adequate clinical justification exists.",
       "for.pt1.t":"Video call","for.pt1.d":"Video consultation in Spanish or English, from wherever you are in Chile.",
       "for.pt2.t":"Clinical documentation","for.pt2.d":"Guidance on medical documentation for personal use during your stay.",
@@ -1923,9 +1899,36 @@ Relevant medical history:`
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   /* ── Cookie banner ──────────────────────────────────────── */
+  function loadAnalytics() {
+    if (window.__alAnalyticsLoaded) return;
+    window.__alAnalyticsLoaded = true;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'G-EKEJ70PE1S', { anonymize_ip: true });
+
+    const ga = document.createElement('script');
+    ga.async = true;
+    ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-EKEJ70PE1S';
+    document.head.appendChild(ga);
+
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('init', '7605269199588599');
+    window.fbq('track', 'PageView');
+  }
+
   (function initCookies() {
     const consent = localStorage.getItem('cookie_consent');
-    if (consent) return; // already hidden, no flash
+    if (consent === 'accepted') {
+      loadAnalytics();
+      return;
+    }
+    if (consent === 'rejected') return;
     setTimeout(() => {
       document.getElementById('cookie-banner').classList.remove('hidden');
     }, 1200);
@@ -1934,7 +1937,7 @@ Relevant medical history:`
   function acceptCookies() {
     localStorage.setItem('cookie_consent', 'accepted');
     document.getElementById('cookie-banner').classList.add('hidden');
-    // If GA4/Pixel are activated, signal consent here
+    loadAnalytics();
   }
 
   function rejectCookies() {
@@ -1949,12 +1952,17 @@ Relevant medical history:`
 
   /* ── Privacy modal ──────────────────────────────────────── */
   function openPrivacy() {
-    document.getElementById('privacy-modal').classList.add('open');
+    const modal = document.getElementById('privacy-modal');
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    modal.querySelector('.modal-close').focus();
   }
 
   function closePrivacy() {
-    document.getElementById('privacy-modal').classList.remove('open');
+    const modal = document.getElementById('privacy-modal');
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   }
 
